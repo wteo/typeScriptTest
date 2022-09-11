@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"path": "react-ts",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build - react-ts",
+			"detail": "react-scripts build"
+		}
+	]
+}
