@@ -1,10 +1,21 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 
+import { TodosContext } from '../store/todos-context';
 import classes from './NewTodo.module.css';
 
 // set void since onAddTodo function not returning anything
 // But we do need to assign type to the value of the parameter.
+/* 
 const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
+
+}
+*/
+
+// When using a a global context, can get rid of props and their assigned types.
+// This is because the types are already defined in the global context.
+const NewTodo: React.FC = () => {
+
+    const todosCtx = useContext(TodosContext);
 
     // <> telling system what specific element type we want stored.
     // Each of these DOM elements have their own built-in Type which you can use in TypeScript to refer to them
@@ -24,7 +35,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = (props) => {
             return;
         }
 
-        props.onAddTodo(enteredText);
+        todosCtx.addTodo(enteredText);
 
     };
 

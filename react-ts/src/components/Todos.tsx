@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import TodoItem from './TodoItem';
-import Todo from '../models/todo';
+import { TodosContext } from '../store/todos-context';
 
 import classes from './Todos.module.css';
 
@@ -10,15 +10,17 @@ import classes from './Todos.module.css';
 // This is a generic type.
 // <{}> allows us to merge our own objects
 
-const Todos: React.FC<{items: Todo[], onRemove: (selectedTodo: string) => void }> = (props) => {
+const Todos: React.FC = () => {
+
+    const todosCtx = useContext(TodosContext);
 
     const removeTodoHandler = (selectedTodo: string) => {
-        props.onRemove(selectedTodo);
+        todosCtx.removeTodo(selectedTodo);
     }
 
     return (
         <ul className={classes.todos}>
-            { props.items.map((item) => <TodoItem id={item.id} key={item.id} text={item.text} onRemove={removeTodoHandler} />) }
+            { todosCtx.items.map((item) => <TodoItem id={item.id} key={item.id} text={item.text} onRemove={removeTodoHandler} />) }
         </ul>
     );
 };

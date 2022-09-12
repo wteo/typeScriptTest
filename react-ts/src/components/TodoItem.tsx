@@ -9,7 +9,7 @@ const TodoItem: React.FC<{ id: string, text: string, onRemove: (value: string) =
         props.onRemove(selectedTodo);
     };
 
-    return <li id={props.id} className={classes.item} onClick={clickHandler}>{props.text}</li>;
+    return <li className={classes.item} onClick={clickHandler}>{props.text}</li>;
 };
 
 export default TodoItem;
