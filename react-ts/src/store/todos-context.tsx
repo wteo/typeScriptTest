@@ -19,9 +19,7 @@ export const TodosContext = React.createContext<TodosContextObj>({
 
  const TodosContextProvider: React.FC = (props) => {
     
-    const [todos, setTodos] = useState<Todo[]>([]); // empty array can't tell what type it is.
-    // useState is a generic type
-    // <Todo[]> This tells states to manage a list of todos.
+    const [todos, setTodos] = useState<Todo[]>([]); 
   
     const addTodoHandler = (todoText: string) => {
       const newTodo = new Todo(todoText);
